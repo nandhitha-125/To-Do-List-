@@ -31,7 +31,7 @@ export const signup = async (
     }
 
     const user = await User.create({ name, email, password });
-    const token = generateToken(user._id as string);
+    const token = generateToken(user._id.toString());
 
     res.status(201).json({
       token,
@@ -69,7 +69,7 @@ export const login = async (
       return;
     }
 
-    const token = generateToken(user._id as string);
+    const token = generateToken(user._id.toString());
 
     res.status(200).json({
       token,
